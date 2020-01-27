@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<head>
+    <body>
+        <script>
+            let userScore = 0;
+            let botScore = 0;
+
+            function computerTurn(){
+                let botChoice = "";
+                let botRandNum = Math.floor(Math.random() * 3);
+                switch (true){
+                    case botRandNum == 0:
+                        botChoice = "rock";
+                        break;
+                    case botRandNum == 1:
+                        botChoice = "scissors";
+                        break;
+                    case botRandNum == 2:
+                        botChoice = "paper";
+                        break;
+                    }
+                return botChoice;
+            }
+            function userTurn(){
+                let userInput = prompt("Rock, paper, or scissors?");
+                let userChoice = userInput.toLowerCase();
+                switch (true){
+                    case userChoice == "rock":
+                        break;
+                    case userChoice == "paper":
+                        break;
+                    case userChoice == "scissors":
+                        break;
+                    default:
+                        userInput = prompt("You need to enter rock, paper, or scissors!");
+                        userChoice = userInput.toLowerCase();
+                        break;
+                }
+                return userChoice;
+            }
+
+            function compare(){
+
+
+                let botPlay = computerTurn();
+                let userPlay = userTurn();
+
+
+                alert("Computer play is   " + botPlay + "   and user play is   " + userPlay);
+                switch (true){
+                    case botPlay == userPlay:
+                        alert("Draw! Try again.");
+                        break;
+                    case botPlay == "rock":
+                        if (userPlay == "scissors"){
+                            alert("Rock beats scissors! You lose this round.");
+                            botScore++;
+                        }
+                        else{
+                            alert("Paper beats rock! You win this round!");
+                            userScore++;
+                        }
+                        break;
+                    case botPlay == "paper":
+                        if (userPlay == "rock"){
+                            alert("Paper beats rock! You lose this round.");
+                            botScore++;
+                        }
+                        else {
+                            alert("Scissors beat paper! You win this round!");
+                            userScore++;
+                        }
+                        break;
+                    case botPlay == "scissors":
+                        if (userPlay == "paper"){
+                            alert("Scissors beat paper! You lose this round.");
+                            botScore++;
+                        }
+                        else {
+                            alert("Rock beats scissors! You win this round!");
+                            userScore++;
+                        }
+                        break;
+                }  
+            }
+            
+            function game(){
+                for (let round = 0; round < 5; round++){
+                    compare();
+                    alert("Computer Score: " + botScore + "  User Score: " + userScore);
+                }
+                switch(true){
+                case userScore > botScore:
+                    alert("You win!");
+                    break;
+                case userScore < botScore:
+                    alert("You lose!");
+                    break;
+                default:
+                    alert("A tie!");
+                    break;
+                }
+
+            }
+
+            game();
+
+
+            
+        </script>
+    </body>
+</head>
